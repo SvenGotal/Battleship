@@ -8,7 +8,7 @@
     <ProjectGuid>{AE1E94BB-4CE6-4108-BA49-3C991F3CE663}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Vsite.Oom.BattleShip.Model</RootNamespace>
+    <RootNamespace>Vsite.Oom.BattleShip.UnitTests</RootNamespace>
     <AssemblyName>UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="TestSquare.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestGrid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
