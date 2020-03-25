@@ -9,7 +9,7 @@ namespace Vsite.Oom.Battleship.Model
         [TestMethod]
         public void squareConstructorCreatesSquareWithGivenPosition()
         {
-            square S = new square(1, 8);
+            Square S = new Square(1, 8);
             Assert.AreEqual(1,S.row);
             Assert.AreEqual(8, S.column);
         }

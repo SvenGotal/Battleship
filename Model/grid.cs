@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    public class grid
+    public class Grid
     {
-        public grid(int rw, int cl)
+        public Grid(int rw, int cl)
         {
             Rw = rw;
             Cl = cl;
-            squares = new square[Rw,Cl];
+            squares = new Square[Rw,Cl];
             for (int r = 0; r < Rw; ++r)
             {
                 for(int c = 0; c < Cl; ++c)
                 {
-                    squares[r, c] = new square(r, c);
+                    squares[r, c] = new Square(r, c);
                 }
             }
         }
-        public void eliminateSquares(IEnumerable<square> squares)
+        public void eliminateSquares(IEnumerable<Square> squares)
         {
             throw new NotImplementedException();
         }
         public readonly int Rw;
         public readonly int Cl;
-        public IEnumerable<IEnumerable<square>> GetAvaliablePlacements(int len)
+        public IEnumerable<IEnumerable<Square>> GetAvaliablePlacements(int len)
         {
             throw new NotImplementedException();
         }
-        private square[,] squares;
+        private Square[,] squares;
     }
 }

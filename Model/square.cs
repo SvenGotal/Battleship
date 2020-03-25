@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    public class square
+    public class Square
     {
-        public square(int r, int c)
+        public Square(int r, int c)
         {
             row = r;
             column = c;
