@@ -10,6 +10,13 @@ namespace Vsite.Oom.Battleship.Model
         {
             Rows = rows;
             Columns = columns;
+            sqaures = new Square[Rows, Columns];
+            for(int r = 0; r < Rows; ++r)
+            {
+                for (int c = 0; c < Columns; ++c) {
+                    sqaures[r, c] = new Square(r, c);
+                }
+            }
         }
 
         public readonly int Rows;
@@ -19,5 +26,9 @@ namespace Vsite.Oom.Battleship.Model
         {
             throw new NotImplementedException();
         }
+
+        private Square[,] sqaures;
     }
+
+
 }
