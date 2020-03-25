@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace Vsite.Oom.Battleship.Model.UnitTests
 {
@@ -20,6 +21,32 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
 
         }
 
+        [TestMethod]
+        public void GetAvaliablePlacementsForShipReturns3PlacementsForShipOfLenght2InHorizontalGrid1x6AfterSquareIsEliminated()
+        {
+            Grid g = new Grid(1, 6);
+            g.EliminateSquares(new List<Square>{ new Square(1,3) });
+            var result = g.GetAvaliablePlacements(3);
+            Assert.AreEqual(3, result.Count());
+
+
+        }
+
+        [TestMethod]
+        public void GetAvaliablePlacementsForShipReturns2PlacementsForShipOfLenght2InHorizontalGrid5x1AfterSquareIsEliminated()
+        {
+            Grid g = new Grid(5, 1);
+            g.EliminateSquares(new List<Square> { new Square(1, 0) });
+
+            var result = g.GetAvaliablePlacements(2);
+            Assert.AreEqual(2, result.Count());
+
+
+            foreach (var sequence in result)
+                Assert.AreEqual(2, sequence.Count());
+
+
+        }
         [TestMethod]
         public void GetAvaliablePlacementsForShipReturns3PlacementsForShipOfLenght3InHorizontalGrid5x1()
         {
