@@ -7,7 +7,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
     public class TestSquare
     {
         [TestMethod]
-        public void SquareConstructorCreatesSquareWitGivenPosition()
+        public void SquareConstructorCreatesSquareWithGivenPosition()
         {
             Square s = new Square(1, 8);
             Assert.AreEqual(1,s.Row);
