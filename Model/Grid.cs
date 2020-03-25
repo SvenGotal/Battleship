@@ -12,6 +12,7 @@ namespace Vsite.Oom.Battleship.Model
         {
             Rows = rows;
             Columns = columns;
+            
             squares = new Square[Rows, Columns];
             for(int r=0; r< Rows; ++r)
             {
@@ -23,9 +24,14 @@ namespace Vsite.Oom.Battleship.Model
         {
             throw new NotImplementedException();
         }
+        public void EliminateSquares(IEnumerable<Square> squares)
+        {
+            throw new NotImplementedException();
+        }
+        
+              
         public readonly int Rows;
         public readonly int Columns;
-
         private Square[,] squares;
 
     }
