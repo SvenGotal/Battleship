@@ -30,6 +30,11 @@ namespace Vsite.Oom.Battleship.Model
             throw new NotImplementedException();
         }
 
+        public void EliminateSqure(IEnumerable<Square> squares)
+        {
+
+        }
+
         private Square[,] squares;
     }
 }

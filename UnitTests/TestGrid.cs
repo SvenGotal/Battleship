@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Vsite.Oom.Battleship.Model.UnitTests
@@ -27,6 +28,30 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
 
             foreach (var sequence in result)
                 Assert.AreEqual(3, sequence.Count());
+        }
+
+        [TestMethod]
+        public void GetAvailablePlacementsReturns3PlacementsForShipOfLenght2InHorizontalGrid1x6AfterSquareIsEliminated()
+        {
+            Grid g = new Grid(1, 6);
+            g.EliminateSqure(new List<Square> { new Square(0, 2) });
+            var result = g.GetAvailablePlacements(2);
+            Assert.AreEqual(3, result.Count());
+
+            foreach (var sequence in result)
+                Assert.AreEqual(2, sequence.Count());
+        }
+
+        [TestMethod]
+        public void GetAvailablePlacementsReturns3PlacementsForShipOfLenght2InVerticalGrid5x1AfterSquareIsEliminated()
+        {
+            Grid g = new Grid(1, 6);
+            g.EliminateSqure(new List<Square> { new Square(1, 0) });
+            var result = g.GetAvailablePlacements(2);
+            Assert.AreEqual(2, result.Count());
+
+            foreach (var sequence in result)
+                Assert.AreEqual(2, sequence.Count());
         }
     }
 }
