@@ -21,6 +21,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
 
 
         }
+        [TestMethod]
         public void GetAvailablePlacementsForShipReturns3PlacementsForShipOfLength3InVerticalGrid5x1()
         {
             Grid g = new Grid(5, 1);
