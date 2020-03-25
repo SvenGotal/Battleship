@@ -17,11 +17,15 @@ namespace Vsite.Oom.Battleship.Model
             {
                 for (int c = 0; c < Columns; ++c)
                     squares[r, c] = new Square(r,c);
-
             }
         }
 
         public IEnumerable<IEnumerable<Square>> GetAvailablePlacements(int lengts)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void EliminateSquares(IEnumerable<Square> squares)
         {
             throw new NotImplementedException();
         }
