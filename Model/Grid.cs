@@ -12,6 +12,12 @@ namespace Vsite.Oom.Battleship.Model
 		{
 			Rows = rows;
 			Cols = cols;
+			squares = new Square[Rows, Cols];
+			for(int r = 0; r < Rows; ++r)
+			{
+				for(int c = 0; r < Cols; ++c)
+					squares[r, c] = new Square(r, c);
+			}
 		}
 		public IEnumerable<IEnumerable<Square>> GetAvailablePlacments(int length)
 		{
@@ -19,5 +25,7 @@ namespace Vsite.Oom.Battleship.Model
 		}
 		public readonly int Rows;
 		public readonly int Cols;
+
+		private Square[,] squares;
 	}
 }
