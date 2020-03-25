@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    public class Square
+    public class Square //stavili smo public da možemo testirati iz drugog modula
     {
         public Square(int row, int column)
         {
