@@ -12,6 +12,14 @@ namespace Vsite.Oom.Battleship.Model
         {
             Rw = rw;
             Cl = cl;
+            squares = new square[Rw,Cl];
+            for (int r = 0; r < Rw; ++r)
+            {
+                for(int c = 0; c < Cl; ++c)
+                {
+                    squares[r, c] = new square(r, c);
+                }
+            }
         }
         public readonly int Rw;
         public readonly int Cl;
@@ -19,5 +27,6 @@ namespace Vsite.Oom.Battleship.Model
         {
             throw new NotImplementedException();
         }
+        private square[,] squares;
     }
 }
