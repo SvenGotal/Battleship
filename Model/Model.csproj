@@ -7,7 +7,7 @@
     <ProjectGuid>{6B4431C3-6096-42DD-80A3-4B8E4FD96EC1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Model</RootNamespace>
+    <RootNamespace>Vsite.Oom.Battleship.Model</RootNamespace>
     <AssemblyName>Model</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
