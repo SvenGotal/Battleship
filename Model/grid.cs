@@ -21,6 +21,10 @@ namespace Vsite.Oom.Battleship.Model
                 }
             }
         }
+        public void eliminateSquares(IEnumerable<square> squares)
+        {
+            throw new NotImplementedException();
+        }
         public readonly int Rw;
         public readonly int Cl;
         public IEnumerable<IEnumerable<square>> GetAvaliablePlacements(int len)
