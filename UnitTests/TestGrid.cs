@@ -12,7 +12,7 @@ namespace Vsite.Oom.BattleShip.Model.UnitTests
         public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLenght3InHorizontalGrid1x4()
         {
             Grid g = new Grid(1, 6);
-            g.EliminateSquares(new List<Square>({ new Square(0, 2) }));
+            g.EliminateSquares(new List<Square>{ new Square(0, 2) });
             var result = g.GetAvailablePlacements(2);
             Assert.AreEqual(3, result.Count());
 
@@ -23,7 +23,7 @@ namespace Vsite.Oom.BattleShip.Model.UnitTests
         public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLenght2InVerticalGrid5x1AfterSquareIsEliminated()
         {
             Grid g = new Grid(5, 1);
-            g.EliminateSquares(new List<Square>({ new Square(1, 0) }));
+            g.EliminateSquares(new List<Square>{ new Square(1, 0) });
             var result = g.GetAvailablePlacements(2);
             Assert.AreEqual(2, result.Count());
 
