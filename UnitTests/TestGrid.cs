@@ -18,6 +18,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.AreEqual(3, result.First().Count());
             Assert.AreEqual(3, result.Last().Count());
         }
+        [TestMethod]
         public void GetAvailablePlacementsForShipReturns3PlacementsForShipOfLength3InVerticalGrid5x1()
         {
             Grid g = new Grid(5, 1);
@@ -30,6 +31,8 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             }
             
         }
+
+        [TestMethod]
         public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength2InHorizontalGrid1x6AfterSquareIsEliminated()
         {
             Grid g = new Grid(1, 6);
@@ -42,6 +45,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             //Assert.AreEqual(3, result.First().Count());
             //Assert.AreEqual(3, result.Last().Count());
         }
+        [TestMethod]
         public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength3InVerticalGrid5x1AfterSquareIsEliminated()
         {
             Grid g = new Grid(5, 1);
