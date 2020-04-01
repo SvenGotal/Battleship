@@ -14,18 +14,30 @@ namespace Vsite.Oom.Battleship.Model
         {
             Rows = rows;
             Columns = columns;
-            squares = new Square[Rows,Columns];
+            squares = new Square[Rows, Columns];
             for (int r = 0; r < Rows; ++r)
             {
                 for (int c = 0; c < Columns; ++c)
                 {
-                    squares[r,c] = new Square(r,c);
-                } 
+                    squares[r, c] = new Square(r, c);
+                }
             }
         }
 
         public IEnumerable<Placement> GetAvailablePlacements(int length)
         {
+            if (length != 1)
+            {
+                List<List<Square>> result = new List<List<Square>>();
+                for (int r = 0; r < Rows; ++r)
+                {
+                    for (int c = 0; c < Columns; ++c)
+                    {
+                        if(squares[r, c] != null)
+                            result.Add(new List<Square> {squares[r,c]});
+                    }
+                }
+            }
             return GetAvailableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length));
         }
 
@@ -40,7 +52,7 @@ namespace Vsite.Oom.Battleship.Model
         private IEnumerable<Placement> GetAvailableHorizontalPlacements(int length)
         {
             var result = new List<List<Square>>();
-            for (int r = 0; r< Rows; ++r)
+            for (int r = 0; r < Rows; ++r)
             {
                 int counter = 0;
                 for (int c = 0; c < Columns; ++c)
@@ -53,8 +65,8 @@ namespace Vsite.Oom.Battleship.Model
                     {
                         List<Square> seq = new List<Square>();
                         for (int first = c - length + 1; first <= c; ++first)
-                            seq.Add(squares[r,first]);
-                        result.Add(seq);                        
+                            seq.Add(squares[r, first]);
+                        result.Add(seq);
                     }
                 }
             }
@@ -62,8 +74,30 @@ namespace Vsite.Oom.Battleship.Model
             return result;
         }
 
-      //  private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
+        private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
+        {
+            var result = new List<List<Square>>();
+            for (int c = 0; c < Columns; ++c)
+            {
+                int counter = 0;
+                for (int r = 0; r < Rows; ++r)
+                {
+                    if (squares[r, c] != null)
+                        ++counter;
+                    else
+                        counter = 0;
+                    if (counter >= length)
+                    {
+                        List<Square> seq = new List<Square>();
+                        for (int first = r - length + 1; first <= r; ++first)
+                            seq.Add(squares[first, c]);
+                        result.Add(seq);
+                    }
+                }
+            }
 
+            return result;
+        }
 
         public readonly int Rows;
         public readonly int Columns;
