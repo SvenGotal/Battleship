@@ -25,10 +25,9 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
         public void GetAvaliablePlacementsForShipReturns3PlacementsForShipOfLenght2InHorizontalGrid1x6AfterSquareIsEliminated()
         {
             Grid g = new Grid(1, 6);
-            g.EliminateSquares(new List<Square>{ new Square(1,3) });
-            var result = g.GetAvaliablePlacements(3);
+            g.EliminateSquares(new List<Square>{ new Square(0,2) });
+            var result = g.GetAvaliablePlacements(2);
             Assert.AreEqual(3, result.Count());
-
 
         }
 
