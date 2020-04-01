@@ -26,7 +26,26 @@ namespace Vsite.Oom.BattleShip.Model
 
         public IEnumerable<IEnumerable<Square>> GetAvailablePlacements(int length)
         {
-            return GetAvailableHorizontalPlacement(length).Concat(GetAvailableVerticalPlacement(length));
+            if(length != 1)
+            {
+                return GetAvailableHorizontalPlacement(length).Concat(GetAvailableVerticalPlacement(length));
+            }
+            
+            List<List<Square>> result = new List<List<Square>>();
+            for (int r = 0; r < this.Rows; ++r)
+            {
+                for (int c = 0; c < this.Columns; ++c)
+                {
+                  if(squares[r, c] != null)
+                  {
+                     result.Add(new List<Square> { squares[r, c] });
+                  }
+
+                }
+                
+            }
+            return result;
+
         }
 
         public void EliminateSquares(Placement eliminate)
