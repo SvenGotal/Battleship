@@ -25,7 +25,18 @@ namespace Vsite.Oom.Battleship.Model
 
         public IEnumerable<Placement> GetAvailablePlacements(int length)
         {
-            return GetAvailableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length));
+            if (length != 1)
+                return GetAvailableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length));
+            List<List<Square>> result = new List<List<Square>>();
+            for (int r = 0; r < Rows; ++r)
+            {
+                for (int c = 0; c < Columns; ++c)
+                {
+                    if (squares[r, c] != null)
+                        result.Add(new List<Square> { squares[r, c] });
+                }
+            }
+            return result;
         }
         public void EleminateSquares(Placement toEliminate)
         {
@@ -37,19 +48,16 @@ namespace Vsite.Oom.Battleship.Model
             var result = new List<List<Square>>();
             for (int r = 0; r < Rows; ++r)
             {
-                int counter = 0;
-                for (int c = 0; c < Columns; ++c)
+                LimitedQueue<Square> passed = new LimitedQueue<Square>(length);
+                    for (int c = 0; c < Columns; ++c)
                 {
                     if (squares[r, c] != null)
-                        ++counter;
+                        passed.Enqueue(squares[r, c]);
                     else
-                        counter = 0;
-                    if (counter >= length)
+                        passed.Clear();
+                    if (passed.Count == length)
                     {
-                        List<Square> seq = new List<Square>();
-                        for (int first = c - length + 1; first <= c; ++first)
-                            seq.Add(squares[r, first]);
-                        result.Add(seq);
+                        result.Add(passed.ToList());
                     }
                 }
             }
@@ -57,30 +65,7 @@ namespace Vsite.Oom.Battleship.Model
         }
         private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
         {
-            throw new NotImplementedException();
-
-            /*
-             * var result = new List<List<Square>>();
-            for (int r = 0; r < Rows; ++r)
-            {
-                int counter = 0;
-                for (int c = 0; c < Columns; ++c)
-                {
-                    if (squares[r, c] != null)
-                        ++counter;
-                    else
-                        counter = 0;
-                    if (counter >= length)
-                    {
-                        List<Square> seq = new List<Square>();
-                        for (int first = c - length + 1; first <= c; ++first)
-                            seq.Add(squares[r, first]);
-                        result.Add(seq);
-                    }
-                }
-            }
-            return result;
-            */
+            return new List<Placement>();
         }
 
         public readonly int Rows;
