@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
+    using placement = IEnumerable<Square>;
     public class Grid
     {
         public Grid(int rw, int cl)
@@ -21,13 +22,49 @@ namespace Vsite.Oom.Battleship.Model
                 }
             }
         }
-        public void eliminateSquares(IEnumerable<Square> squares)
+        public void eliminateSquares(placement toElim)
         {
-            throw new NotImplementedException();
+            foreach(var sq in toElim)
+            {
+                squares[sq.row, sq.column]=null;
+            }
         }
         public readonly int Rw;
         public readonly int Cl;
-        public IEnumerable<IEnumerable<Square>> GetAvaliablePlacements(int len)
+        public IEnumerable<placement> GetAvailablePlacements(int len)
+        {
+            return GetAvailableHorizontalPlacements(len).Concat(GetAvailableVerticalPlacements(len));
+        }
+        private IEnumerable<placement> GetAvailableHorizontalPlacements(int len)
+        {
+            var res = new List<List<Square>>();
+            for(int r = 0; r < Rw; ++r)
+            {
+                int cnt = 0;
+                for(int c = 0; c < Cl; ++c)
+                {
+                    if (squares[r, c] != null)
+                    {
+                        ++cnt;
+                    }
+                    else
+                    {
+                        cnt = 0;
+                    }
+                    if (cnt >= len)
+                    {
+                        List<Square> seq = new List<Square>();
+                        for(int f = c - len + 1;f <= c;++f)
+                        {
+                            seq.Add(squares[r, f]);
+                        }
+                        res.Add(seq);
+                    }
+                }
+            }
+            return res;
+        }
+        private IEnumerable<placement> GetAvailableVerticalPlacements(int len)
         {
             throw new NotImplementedException();
         }
