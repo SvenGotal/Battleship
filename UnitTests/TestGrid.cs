@@ -39,11 +39,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
 
             g.EliminateSquares(new List<Square>{ new Square(0, 2) });
             var result = g.GetAvailablePlacements(2);
-            Assert.AreEqual(2, result.Count());
-
-            Assert.AreEqual(3, result.First().Count());
-            Assert.AreEqual(3, result.First().Count());
-
+            Assert.AreEqual(3, result.Count());
         }
 
 
