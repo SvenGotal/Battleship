@@ -36,8 +36,21 @@ namespace Vsite.Oom.Battleship.Model
 
         public IEnumerable<Placement> GetAviablePlacments(int length)
         {
-            return GetAviableHorizontalPlacements(length);
+            if (length != 1)
+            {
+                return GetAviableHorizontalPlacements(length); //.Concat(GetAviableVerticalPlacements);
+            }
 
+            List<List<Square>> result = new List<List<Square>>();
+            for (int r = 0; r < Rows; ++r)
+            {
+                for (int c = 0; c < Columns; ++c)
+                {
+                    if (squares[r, c] != null)
+                        result.Add(new List<Square> { squares[r, c] });
+                }
+            }
+            return result;
         }
 
         private IEnumerable<Placement> GetAviableHorizontalPlacements (int length)
