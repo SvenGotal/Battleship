@@ -15,8 +15,10 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             var result = g.GetAvailablePlacements(3);
             Assert.AreEqual(2, result.Count());
 
-            Assert.AreEqual(3, result.First().Count());
-            Assert.AreEqual(3, result.Last().Count());
+            foreach (var sequence in result)
+            {
+                Assert.AreEqual(3, sequence.Count());
+            }
         }
         [TestMethod]
         public void GetAvailablePlacementsForShipReturns3PlacementsForShipOfLength3InVerticalGrid5x1()
