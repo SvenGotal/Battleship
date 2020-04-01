@@ -38,14 +38,12 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
         public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength2InHorizontalGrid1x6AfterSquareIsEliminated()
         {
             Grid g = new Grid(1, 6);
-            g.EliminateSquares(new List<Square> { new Square(1, 2) });
+            g.EliminateSquares(new List<Square> { new Square(0, 2) });
             var result = g.GetAvailablePlacements(2);
             Assert.AreEqual(3, result.Count());             
 
 
-           
-
-
+          
         }
         [TestMethod]
         public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength2InVerticalGrid5x1AfterSquareIsEliminated()
