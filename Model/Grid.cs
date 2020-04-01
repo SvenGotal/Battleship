@@ -19,9 +19,9 @@ namespace Vsite.Oom.Battleship.Model
 			Columns = columns;
 			squares = new Square[Rows, Columns];
 
-			for (int r = 0; r < rows; r++)
+			for (int r = 0; r < Rows; r++)
 			{
-				for (int c = 0; c < columns; c++)
+				for (int c = 0; c < Columns; c++)
 				{
 					squares[r, c] = new Square(r, c);
 				}
@@ -30,7 +30,21 @@ namespace Vsite.Oom.Battleship.Model
 
 		public IEnumerable<Placement> GetAvailablePlacements(int lenght)
 		{
-			return GetAwailableHorizontalPlacements(lenght).Concat(GetAwailableVerticalPlacements(lenght));
+			if (lenght != 1)
+			{
+				return GetAwailableHorizontalPlacements(lenght).Concat(GetAwailableVerticalPlacements(lenght));
+			}
+			List<List<Square>> result = new List<List<Square>>();
+			for (int r = 0; r < Rows; r++)
+			{
+				for (int c = 0; c < Columns; c++)
+				{
+					if (squares[r, c] != null)
+						result.Add(new List<Square> { squares[r, c] });
+				}
+			}
+
+			return result;
 		}
 
 		public void EliminateSquares(Placement toEliminate)
