@@ -50,25 +50,21 @@ namespace Vsite.Oom.Battleship.Model
             var result = new List<List<Square>>();
             for(int r = 0; r < Rows; ++r)
             {
-                int counter = 0;
-                for(int c = 0; c < Columns; ++c)
+                LimitedQueue<Square> passed = new LimitedQueue<Square>(Length);
+                for (int c = 0; c < Columns; ++c)
                 {
+
                     if (squares[r, c] != null)
                     {
-                        ++counter;
+                        passed.Enqueue(squares[r, c]);
                     }
                     else
                     {
-                        counter = 0;
+                        passed.Clear();
                     }
-                    if (counter >= Length)
+                    if (passed.Count == Length)
                     {
-                        List < Square >seq= new List<Square>();
-                        for(int first = c - Length + 1; first <= c; ++first)
-                        {
-                            seq.Add(squares[r, first]);
-                        }
-                        result.Add(seq);
+                        result.Add(passed.ToList());
                     }
                 }
             }
@@ -79,25 +75,20 @@ namespace Vsite.Oom.Battleship.Model
             var result = new List<List<Square>>();
             for (int c = 0; c < Columns; ++c)
             {
-                int counter = 0;
+                LimitedQueue<Square> passed = new LimitedQueue<Square>(Length);
                 for (int r = 0; r < Rows; ++r)
                 {
                     if (squares[r, c] != null)
                     {
-                        ++counter;
+                        passed.Enqueue(squares[r, c]);
                     }
                     else
                     {
-                        counter = 0;
+                        passed.Clear();
                     }
-                    if (counter >= Length)
+                    if (passed.Count == Length)
                     {
-                        List<Square> seq = new List<Square>();
-                        for (int first = r - Length + 1; first <= r; ++first)
-                        {
-                            seq.Add(squares[first, c]);
-                        }
-                        result.Add(seq);
+                        result.Add(passed.ToList());
                     }
                 }
             }
