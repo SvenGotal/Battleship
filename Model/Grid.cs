@@ -23,7 +23,21 @@ namespace Vsite.oom.Battleship.Model
         }
         public IEnumerable<Placement> GetAvailablePlacements(int length)
         {
-            return GetAvaillableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length)); ;
+            if (length != 1)
+            {
+                return GetAvailableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length));
+            }
+
+            List<List<Square>> result = new List<List<Square>>();
+            for (int r = 0; r < Rows; ++r)
+            {
+                for (int c = 0; c < Columns; ++c)
+                {
+                    if (squares[r, c] != null)
+                        result.Add(new List<Square> { squares[r, c] });
+                }
+            }
+            return result;
         }
 
         public void EliminateSquares(Placement  eliminate)
@@ -37,7 +51,7 @@ namespace Vsite.oom.Battleship.Model
 
         }
 
-        private IEnumerable<Placement> GetAvaillableHorizontalPlacements(int length)
+        private IEnumerable<Placement> GetAvailableHorizontalPlacements(int length)
         {
             var result = new List<List<Square>>();
             for (int r = 0; r < Rows; ++r)
