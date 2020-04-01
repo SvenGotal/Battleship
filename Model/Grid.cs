@@ -21,8 +21,22 @@ namespace Vsite.Oom.Battleship.Model
             }
         }
 
-        public IEnumerable<Placement> GetAvailablePlacements(int lenght) {
-            return GetAvailableHorizontalPlacments(lenght).Concat(GetAvailableVerticalPlacments(lenght));
+        public IEnumerable<Placement> GetAvailablePlacements(int lenght)
+        {
+            if (lenght != 1)
+            {
+                return GetAvailableHorizontalPlacments(lenght).Concat(GetAvailableVerticalPlacments(lenght));
+            }
+            List<List<Square>> result = new List<List<Square>>();
+            for (int r = 0; r < Rows; ++r)
+            {
+                for (int c = 0; c < Columns; ++c)
+                {
+                    if (squares[r, c] != null) ;
+                    result.Add(new List<Square> { squares[r, c] });
+                }
+            }
+            return result;
         }
 
         public void EliminateSquares(Placement toEliminate) {
