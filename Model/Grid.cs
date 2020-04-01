@@ -21,7 +21,7 @@ namespace Vsite.Oom.Battleship.Model
 		}
 		public IEnumerable<Placement> GetAvailablePlacments(int length)
 		{
-			if(length == 1)
+			if(length != 1)
 			{
 				List<List<Square>> result = new List<List<Square>>();
 				for (int r = 0; r < Rows; ++r)
@@ -64,6 +64,10 @@ namespace Vsite.Oom.Battleship.Model
 			}
 					
 			return result;
+		}
+		private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
+		{
+			throw new NotImplementedException();
 		}
 
 
