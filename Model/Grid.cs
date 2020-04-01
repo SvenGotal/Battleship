@@ -75,6 +75,11 @@ namespace Vsite.Oom.Battleship.Model
             return result;
 
         }
+        private IEnumerable<Placment> GetAvailableVerticalPlacment(int
+     length)
+        {
+            throw new NotImplementedException();
+        }
 
         public readonly int Rows;
         public readonly int Columns;
