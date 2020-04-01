@@ -43,9 +43,9 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
         }
 
         [TestMethod]
-        public void GetAvailablePlacementsReturns3PlacementsForShipOfLenght2InVerticalGrid5x1AfterSquareIsEliminated()
+        public void GetAvailablePlacementsReturns2PlacementsForShipOfLenght2InVerticalGrid5x1AfterSquareIsEliminated()
         {
-            Grid g = new Grid(1, 6);
+            Grid g = new Grid(5, 1);
             g.EliminateSqure(new List<Square> { new Square(1, 0) });
             var result = g.GetAvailablePlacements(2);
             Assert.AreEqual(2, result.Count());
