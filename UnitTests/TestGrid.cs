@@ -19,7 +19,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.AreEqual(3, result.Last().Count());
         }
         [TestMethod]
-        public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength3InVerticalGrid5X1()
+        public void GetAvailablePlacementsForShipReturns3PlacementsForShipOfLength3InVerticalGrid5X1()
         {
             Grid g = new Grid(5, 1);
             var result = g.GetAvailablePlacements(3);
