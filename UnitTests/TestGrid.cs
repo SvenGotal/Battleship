@@ -22,7 +22,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
         [TestMethod]
         public void GetAvailablePlacementForShipReturns3PlacementsForShipOfLenth3InVerticallGrid5x1()
         {
-            Grid g = new Grid(5, 4);
+            Grid g = new Grid(5, 1);
             var result = g.GetAvailablePlacements(3);
             Assert.AreEqual(3, result.Count());
 
