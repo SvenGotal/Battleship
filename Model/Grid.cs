@@ -61,24 +61,18 @@ namespace Vsite.Oom.Battleship.Model
 
 			for (int r = 0; r < Rows; r++)
 			{
-				int counter = 0;
+				LimitedQueue<Square> passed = new LimitedQueue<Square>(lenght);
 
 				for (int c = 0; c < Columns; c++)
 				{
 					if (squares[r, c] != null)
-						++counter;
+						passed.Enqueue(squares[r, c]);
 					else
-						counter = 0;
+						passed.Clear();
 
-					if (counter >= lenght)
+					if (passed.Count == lenght)
 					{
-						List<Square> seq = new List<Square>();
-						for (int first = c - lenght + 1; first <= c; first++)
-						{
-							seq.Add(squares[r, first]);
-						}
-
-						result.Add(seq);
+						result.Add(passed.ToList());
 					}
 				}
 			}
