@@ -25,7 +25,21 @@ namespace Vsite.Oom.Battleship.Model
 
         public IEnumerable<Placement> GetAvailablePlacements(int length)
         {
-            return GetAvailableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length));
+            if (length != 1)
+            {
+                return GetAvailableHorizontalPlacements(length); GetAvailableVerticalPlacements(length);
+            }
+
+            List<List<Square>> result = new List<List<Square>>();
+            for (int r = 0; r < Rows; ++r)
+            {
+                for (int c = 0; c < Columns; ++c)
+                {
+                    if (squares[r, c] != null)
+                        result.Add(new List<Square> { squares[r, c] });
+                }
+            }
+            return result;
         }
 
         public void EliminateSquares(Placement toEliminate)
@@ -41,26 +55,20 @@ namespace Vsite.Oom.Battleship.Model
             var result = new List<List<Square>>();
             for (int r = 0; r < Rows; r++)
             {
-                int counter = 0;
+                LimitedQueue<Square> q = new LimitedQueue<Square>(length);
                 for (int c = 0; c < Columns; c++)
                 {
                     if (squares[r, c] != null)
                     {
-                        counter++;
+                        q.Enqueue(squares[r, c]);
                     }
                     else
                     {
-                        counter = 0;
+                        q.Clear();
                     }
-                    if(counter >= length)
+                    if(q.Count == length)
                     {
-                        List<Square> sequence = new List<Square>();
-                        for (int first = c - length + 1; first <= c; first++)
-                        {
-                            sequence.Add(squares[r, first]);
-                        }
-
-                        result.Add(sequence);
+                        result.Add(q.ToList());
                     }
                 }
             }
@@ -70,7 +78,7 @@ namespace Vsite.Oom.Battleship.Model
 
         private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
         {
-            throw new NotImplementedException();
+            return new List<Placement>();
         }
 
         public readonly int Rows;
