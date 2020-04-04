@@ -10,8 +10,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
     public class TestGrid
     {
         [TestMethod]
-        public void
-        GetAvilablePlacmentsForShipsReturns2PlacmentsForShipsofLength3InHorizontalGrid1x4()
+        public void GetAvilablePlacementsForShipsReturns2PlacmentsForShipsofLength3InHorizontalGrid1x4()
         {
             Grid g = new Grid(1, 4);
             var result = g.GetAvailablePlacements(3);
@@ -20,20 +19,18 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.AreEqual(3, result.Last().Count());
         }
         [TestMethod]
-        public void
-        GetAvilablePlacmentsForShipsReturns2PlacmentsForShipsofLength3InHorizontalGrid5x1()
+        public void GetAvilablePlacementsForShipsReturns2PlacmentsForShipsofLength3InVerticalGrid5x1()
         {
             Grid g = new Grid(5, 1);
             var result = g.GetAvailablePlacements(3);
-            Assert.AreEqual(2, result.Count());
+            Assert.AreEqual(3, result.Count());
 
             foreach (var sequance in result)
                 Assert.AreEqual(3, sequance.Count());
 
         }
         [TestMethod]
-        public void
-        GetAvilablePlacmentsForShipsReturns3PlacmentsForShipsofLength3InHorizontalGrid1x5AfterSquareIsEliminated()
+        public void GetAvilablePlacementsForShipsReturns3PlacmentsForShipsofLength3InHorizontalGrid1x5AfterSquareIsEliminated()
         {
             Grid g = new Grid(1, 6);
             g.EliminateSquares(new List<Square> { new Square(0, 2) });
@@ -44,8 +41,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
 
         }
         [TestMethod]
-        public void
-        GetAvilablePlacmentsForShipsReturns3PlacmentsForShipsofLength3InHorizontalGrid5x1AfterSquareIsEliminated()
+        public void GetAvilablePlacementsForShipsReturns3PlacementsForShipsofLength3InVerticalGrid5x1AfterSquareIsEliminated()
         {
             Grid g = new Grid(5, 1);
             g.EliminateSquares(new List<Square> { new Square(1, 0) });
@@ -59,5 +55,4 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
         }
     }
 }
-
 

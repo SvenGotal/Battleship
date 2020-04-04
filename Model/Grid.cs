@@ -25,7 +25,21 @@ namespace Model
         }
         public IEnumerable<Placment> GetAvailablePlacements(int length)
         {
-            return GetAvailableHorizontalPlacment(length);
+            if (length != 1)
+                return GetAvailableHorizontalPlacement(length).Concat(GetAvailableVerticalPlacement(length));
+
+            List<List<Square>> result = new List<List<Square>>();
+            for (int r = 0; r < Rows; ++r)
+            {
+                for (int c = 0; c < Columns; ++c)
+                {
+                    if (squares[r, c] != null)
+                        result.Add(new List<Square> { squares[r, c] });
+                }
+            }
+            return result;
+
+
         }
 
         public void EliminateSquares(Placment ToEliminate)
@@ -35,8 +49,7 @@ namespace Model
 
         }
 
-        private IEnumerable<Placment> GetAvailableHorizontalPlacment(int
-        length)
+        private IEnumerable<Placment> GetAvailableHorizontalPlacement(int length)
         {
             var result = new List<List<Square>>();
             for (int r = 0; r < Rows; ++r)
@@ -48,15 +61,36 @@ namespace Model
                         passed.Enqueue(squares[r, c]);
                     else
                         passed.Clear();
+
                     if (passed.Count == length)
                     {
-
                         result.Add(passed.ToList());
                     }
                 }
             }
             return result;
 
+        }
+        private IEnumerable<Placment> GetAvailableVerticalPlacement(int length)
+        {
+            var result = new List<List<Square>>();
+            for (int c = 0; c < Columns; ++c)
+            {
+                LimitedQueue<Square> passed = new LimitedQueue<Square>(length);
+                for (int r = 0; r < Rows; ++r)
+                {
+                    if (squares[r, c] != null)
+                        passed.Enqueue(squares[r, c]);
+                    else
+                        passed.Clear();
+
+                    if (passed.Count == length)
+                    {
+                        result.Add(passed.ToList());
+                    }
+                }
+            }
+            return result;
         }
 
         public readonly int Rows;
