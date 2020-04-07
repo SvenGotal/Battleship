@@ -46,7 +46,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Grid g = new Grid(5, 1);
             g.EleminateSquares(new List<Square> { new Square(1, 0) });
             var result = g.GetAvailablePlacements(2);
-            Assert.AreEqual(3, result.Count());
+            Assert.AreEqual(2, result.Count());
 
             foreach (var sequence in result)
                 Assert.AreEqual(2, sequence.Count());
