@@ -46,7 +46,9 @@
     <Compile Include="limitedQueue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ship.cs" />
+    <Compile Include="shipwright.cs" />
     <Compile Include="square.cs" />
+    <Compile Include="squareTerminator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
