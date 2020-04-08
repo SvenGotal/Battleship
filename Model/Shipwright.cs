@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    class Shipwright
+    public class Shipwright
     {
         public Shipwright(int rows, int columns)
         {
@@ -20,23 +20,19 @@ namespace Vsite.Oom.Battleship.Model
                 List<int> lengths = new List<int>(shipLengths.OrderByDescending(x => x));
 
 
-                // 1. create grid
                 grid = new Grid(rows, columns);
+                SquareTerminator terminator = new SquareTerminator(grid);
                 Fleet fleet = new Fleet();
-                    // 2. create fleet
 
                     while (lengths.Count > 0)
                     {
-                        // 3. get available positions from grid
                         var placements = grid.GetAvailablePlacements(lengths[0]);
                         if (placements.Count() == 0)
                             break;
-                        lengths.Remove(0);
-                        // 4. select one position
+                        lengths.RemoveAt(0);
                         int index = random.Next(0, placements.Count());
-                        // 5. forward position to fleet to create a ship
                         fleet.AddShip(placements.ElementAt(index));
-                        // 6. eliminate square from grid
+                        var toEliminate = terminator.ToEliminate(placements.ElementAt(index));
                         if (lengths.Count == 0)
                             return fleet;
                     }
