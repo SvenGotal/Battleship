@@ -20,6 +20,7 @@ namespace Vsite.Oom.Battleship.Model
                 List<int> lenghts = new List<int>(shipLenght.OrderByDescending(x => x));
 
                 grid = new Grid(rows, columns);
+                SquareTerminator terminator = new SquareTerminator(grid);
 
                 Fleet fleet = new Fleet();
 
@@ -28,13 +29,14 @@ namespace Vsite.Oom.Battleship.Model
                     var placments = grid.GetAvailablePlacements(lenghts[0]);
                     if (placments.Count() == 0)
                         break;
-                    lenghts.Remove(0);
+                    lenghts.RemoveAt(0);
 
                     int index = random.Next(0, placments.Count());
 
                     fleet.AddShip(placments.ElementAt(index));
                     // 6. eliminate squares form grid
-
+                    var toEliminate = terminator.ToEliminate(placments.ElementAt(index));
+                    grid.EliminateSquares(toEliminate);
                     if (lenghts.Count == 0)
                         return fleet;
                 }
