@@ -20,6 +20,7 @@ namespace Vsite.Oom.Battleship.Model
             {
                 List<int> lenghts = new List<int>(shipLenths.OrderByDescending(s => s));
                 grid = new Grid(rows, columns);
+                var terminator = new SquareTerminator(grid);
 
                 while (lenghts.Count > 0)
                 {
@@ -30,6 +31,9 @@ namespace Vsite.Oom.Battleship.Model
 
                     int index = random.Next(0, placements.Count());
                     fleet.AddShip(placements.ElementAt(index));
+
+                    var toEliminate = terminator.ToEliminate(placements.ElementAt(index));
+                    grid.EliminateSqure(toEliminate);
 
                     if (lenghts.Count() == 0) return fleet;
                 }
