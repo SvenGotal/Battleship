@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    public class fleet
+    public class Fleet
     {
 
 
