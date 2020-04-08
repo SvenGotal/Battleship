@@ -54,6 +54,7 @@
     <Compile Include="TestGrid.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="UnitTest2.cs" />
+    <Compile Include="UnitTest3.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
