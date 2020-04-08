@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    public class Square
+    public class Square 
     {
         public Square(int row, int column)
         {
@@ -15,5 +15,10 @@ namespace Vsite.Oom.Battleship.Model
         }
         public readonly int Row;
         public readonly int Column;
+
+        public bool Equals(Square other)
+        {
+            return Row == other.Row && Column == other.Column;
+        }
     }
 }
