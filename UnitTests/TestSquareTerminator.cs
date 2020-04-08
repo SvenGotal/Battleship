@@ -29,7 +29,7 @@ namespace Vsite.Oom.BattleShip.Model.UnitTests
             SquareTerminator terminator = new SquareTerminator(grid);
             var toEliminate = terminator.toEliminate(new List<Square> { new Square(0, 0), new Square(0, 1) });
 
-            Assert.AreEqual(8, toEliminate.Count());
+            Assert.AreEqual(6, toEliminate.Count());
             Assert.IsTrue(toEliminate.Contains(new Square(0, 0)));
             Assert.IsTrue(toEliminate.Contains(new Square(1, 0)));
             Assert.IsTrue(toEliminate.Contains(new Square(1, 2)));
@@ -43,7 +43,7 @@ namespace Vsite.Oom.BattleShip.Model.UnitTests
             SquareTerminator terminator = new SquareTerminator(grid);
             var toEliminate = terminator.toEliminate(new List<Square> { new Square(8, 9), new Square(9, 9) });
 
-            Assert.AreEqual(8, toEliminate.Count());
+            Assert.AreEqual(6, toEliminate.Count());
             Assert.IsTrue(toEliminate.Contains(new Square(7, 8)));
             Assert.IsTrue(toEliminate.Contains(new Square(7, 9)));
             Assert.IsTrue(toEliminate.Contains(new Square(9, 8)));
