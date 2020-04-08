@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    class Fleet
+    public class Fleet
     {
         public void AddShip(IEnumerable<Square> squares)
         {
