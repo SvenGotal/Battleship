@@ -57,6 +57,7 @@
     <Compile Include="Ship.cs" />
     <Compile Include="Shipwright.cs" />
     <Compile Include="Square.cs" />
+    <Compile Include="SquareTerminator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
