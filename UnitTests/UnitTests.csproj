@@ -54,6 +54,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestShip.cs" />
     <Compile Include="TestFleet.cs" />
+    <Compile Include="TestShipWright.cs" />
+    <Compile Include="TestSquareTerminator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
