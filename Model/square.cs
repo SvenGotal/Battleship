@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    public class Square
+    public class Square : IEquatable<Square>
     {
         public Square(int r, int c)
         {
@@ -15,5 +15,28 @@ namespace Vsite.Oom.Battleship.Model
         }
         public readonly int row;
         public readonly int column;
+
+        public bool Equals(Square other)
+        {
+            return row == other.row && column == other.column;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+            if(obj.GetType() != GetType())
+            {
+                return false;
+            }
+            return Equals((Square)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return row ^ column;
+        }
     }
 }
