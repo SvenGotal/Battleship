@@ -18,7 +18,27 @@ namespace Vsite.Oom.BattleShip.Model
             
         }
 
-        
+        public bool Equals(Square other)
+        {
+            return row == other.row && column == other.column;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return false;
+            if(obj.GetType() != GetType())
+            {
+                return false;
+            }
+            return Equals((Square)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            return row ^ column;
+        }
+
         public readonly int row;
         public readonly int column;
 
