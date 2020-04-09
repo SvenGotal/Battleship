@@ -15,4 +15,3 @@ namespace Vsite.Oom.Battleship.Model
         public readonly IEnumerable<Square> Squares;
     }
 }
-}
