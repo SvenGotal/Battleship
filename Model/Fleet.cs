@@ -17,7 +17,6 @@ namespace Vsite.Oom.Battleship.Model
 		{
 			get { return ships; }
 		}
-
 		private List<Ship> ships = new List<Ship>();
 	}
 }
