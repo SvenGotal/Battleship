@@ -6,7 +6,7 @@ using System.Linq;
 namespace Vsite.Oom.Battleship.Model
 {
     [TestClass]
-    public class TestFleet //NEDOVRSENO
+    public class TestFleet 
     {
         [TestMethod]
         public void AddShipCreatesNewShipInTheFleet()
