@@ -22,9 +22,13 @@ namespace BattleshipGUI
         }
         private void Grid_Paint(object sender, PaintEventArgs e)
         {
-            CreateGrid();
+            while (CreateGrid() == 404) {
+                gr = new modelNmspc.Grid(10, 10);
+                fl = new modelNmspc.fleet();
+                Console.WriteLine("!fail!");
+            }
             DrawGrid();
-         }
+        }
         private bool CheckIfSquareIsInFleet(int row, int column)
         {
             var shipsList = fl.Ships;
@@ -103,53 +107,50 @@ namespace BattleshipGUI
 
         private void Generate_Click(object sender, EventArgs e)
         {
-            CreateGrid();
+            gr = new modelNmspc.Grid(10, 10);
+            fl = new modelNmspc.fleet();
+            while (CreateGrid() == 404)
+            {
+                gr = new modelNmspc.Grid(10, 10);
+                fl = new modelNmspc.fleet();
+                Console.WriteLine("!fail!");
+            }
             DrawGrid();
         }
 
-        private void CreateGrid()
+        private int CreateGrid()
         {
             int trigger = 1;
-            int shipLength = 2;
-            var availableSquares = gr.GetAvailablePlacements(shipLength);       //dohvaćanje mogućih pozicija na gridu za ship duljine 2
-            ChooseRandomShipPositions_AddToFleet_Eliminate(availableSquares);  //uzima random poziciju od mogućih pozicija, dodaje u flotu, te eliminira iz grida
+            int shipLength = 5;
+            var availableSquares = gr.GetAvailablePlacements(shipLength);                                   //dohvaćanje mogućih pozicija na gridu za ship duljine 5
+            if (ChooseRandomShipPositions_AddToFleet_Eliminate(availableSquares) == 404) { return 404; };  //uzima random poziciju od mogućih pozicija, dodaje u flotu, te eliminira iz grida
             for (int i = 0; i < 9; ++i)
             {
-                switch (trigger)
-                {
-                    case 4:
-                        ++shipLength;
-                        break;                                        //petlja radi isto što i prethodna dva komentara, 
-                    case 7:                                          //samo što za ship zadane duljine ponavlja koliko je potrebno ovisno o pravilima igre
-                        ++shipLength;                               //npr. ship duljine 2 treba postaviti 4 puta
-                        break;
-                    case 9:
-                        ++shipLength;
-                        break;
-                    case 10:
-                        ++shipLength;
-                        break;
+                if (trigger < 3 ) { shipLength = 4; }
+                if (trigger <6  && trigger >= 3 ){ shipLength = 3; }
+                if (trigger <= 10 && trigger >=6 ) { shipLength = 2; }
 
-                }
+
                 availableSquares = gr.GetAvailablePlacements(shipLength);
-                ChooseRandomShipPositions_AddToFleet_Eliminate(availableSquares);
+                if (ChooseRandomShipPositions_AddToFleet_Eliminate(availableSquares) == 404) { return 404; };
                 ++trigger;
             }
+            return 1;
         }
 
-        private void ChooseRandomShipPositions_AddToFleet_Eliminate(IEnumerable<IEnumerable<modelNmspc.Square>> availablePositions)
+        private int ChooseRandomShipPositions_AddToFleet_Eliminate(IEnumerable<IEnumerable<modelNmspc.Square>> availablePositions)
         {
             Random random = new Random();
             int result = availablePositions.Count();
             int randomPosition = random.Next(0, result);
-            int counter=0;
-            List<modelNmspc.Square> squaresToAddAndElim=null;
+            int counter = 0;
+            List<modelNmspc.Square> squaresToAddAndElim = null;
             IEnumerable<modelNmspc.Square> ship = null;
-            using (var sequenceEnum = availablePositions.GetEnumerator()) 
+            using (var sequenceEnum = availablePositions.GetEnumerator())
             {
                 while (sequenceEnum.MoveNext())                             //prolazak kroz validne pozicije,
                 {                                                          // te random odabir jedne od njih
-                    if (counter == randomPosition-1)
+                    if (counter == randomPosition)
                     {
                         ship = sequenceEnum.Current;
                     }
@@ -157,38 +158,46 @@ namespace BattleshipGUI
                 }
             }
             int initCounter = 0;
-            using (var sequenceEnum = ship.GetEnumerator())
+            if (ship == null)
             {
-                while (sequenceEnum.MoveNext())
-                {
-                    if (initCounter == 0)                                  //prolazak kroz svaki square  u izabranoj validnoj poziciji
-                    {
-                        var square = sequenceEnum.Current;
-                        squaresToAddAndElim = new List<modelNmspc.Square> { new modelNmspc.Square(square.row, square.column)};
-                        ++initCounter;
-                    }
-                    else
-                    {
-                        var square = sequenceEnum.Current;
-                        squaresToAddAndElim.Add(square);
-                    }
-                    
-                }
+               return 404;
             }
-            //using (var sequenceEnum = squaresToAddAndElim.GetEnumerator())
-            //{
-            //    while (sequenceEnum.MoveNext())
-            //    {                                                                         //used for debuggin only
-             
-            //            var square = sequenceEnum.Current;
-            //        var c = square.column;
-            //        var r = square.row;
-            //    }
-            //}
-            fl.addShip(squaresToAddAndElim);                                           //dodaje u flotu sve shipove koji su random odabrani
-            gr.eliminateSquares(squaresToAddAndElim);                                  //eliminira iz grida sve square-ove odabranih shipova
-            modelNmspc.squareTerminator terminator = new modelNmspc.squareTerminator(gr);
-            terminator.ToEliminate(squaresToAddAndElim);
-                  }
-    }
+            
+                using (var sequenceEnum = ship.GetEnumerator())
+                {
+                    while (sequenceEnum.MoveNext())
+                    {
+                        if (initCounter == 0)                                  //prolazak kroz svaki square  u izabranoj validnoj poziciji
+                        {
+                            var square = sequenceEnum.Current;
+                            squaresToAddAndElim = new List<modelNmspc.Square> { new modelNmspc.Square(square.row, square.column) };
+                            initCounter = 1;
+                        }
+                        else
+                        {
+                            var square = sequenceEnum.Current;
+                            squaresToAddAndElim.Add(square);
+                        }
+
+                    }
+                }
+                //using (var sequenceEnum = squaresToAddAndElim.GetEnumerator())
+                //{
+                //    while (sequenceEnum.MoveNext())
+                //    {                                                                         //used for debugging only
+
+                //            var square = sequenceEnum.Current;
+                //        var c = square.column;
+                //        var r = square.row;
+                //    }
+                //}
+                fl.addShip(squaresToAddAndElim);                                                     //dodaje u flotu sve shipove koji su random odabrani
+                modelNmspc.squareTerminator terminator = new modelNmspc.squareTerminator(gr);       //eliminira iz grida sve okolne pozicije odabranih shipova
+                var toElim = terminator.ToEliminate(squaresToAddAndElim);
+                gr.eliminateSquares(toElim);                                                         //eliminira iz grida sve square-ove odabranih shipova
+                //Console.WriteLine("eliminirano "+toElim.Count());                                 //used for debugging
+                return 1;
+            }
+        }
+
 }
