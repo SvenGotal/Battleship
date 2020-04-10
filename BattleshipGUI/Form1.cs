@@ -47,28 +47,28 @@ namespace BattleshipGUI
             }
             return false;
         }
-        //private void PrintOutFleetPositions()
-        //{
-        //    var shipsList = fl.Ships;
-        //    using (var sequenceEnum1 = shipsList.GetEnumerator())
-        //    {
-        //        while (sequenceEnum1.MoveNext())                                               //debugging purpose only
-        //        {
-        //            var ship = sequenceEnum1.Current;
-        //            var squares = ship.squares;
-        //            using (var sequenceEnum2 = squares.GetEnumerator())
-        //            {
-        //                while (sequenceEnum2.MoveNext())
-        //                {
-        //                    var square = sequenceEnum2.Current;
-        //                    Console.WriteLine("col = " + square.column + " row=" + square.row);
+        private void PrintOutFleetPositions()
+        {
+            var shipsList = fl.Ships;
+            using (var sequenceEnum1 = shipsList.GetEnumerator())
+            {
+                while (sequenceEnum1.MoveNext())                                               //debugging purpose only
+                {
+                    var ship = sequenceEnum1.Current;
+                    var squares = ship.squares;
+                    using (var sequenceEnum2 = squares.GetEnumerator())
+                    {
+                        while (sequenceEnum2.MoveNext())
+                        {
+                            var square = sequenceEnum2.Current;
+                            Console.WriteLine("col = " + square.column + " row=" + square.row);
 
-        //                }
-        //                Console.WriteLine("ship over---!");
-        //            }
-        //        }
-        //    }
-        //}
+                        }
+                        Console.WriteLine("ship over---!");
+                    }
+                }
+            }
+        }
         private void DrawGrid()
         {  
             Graphics graphobject = grid.CreateGraphics();                      
@@ -79,7 +79,7 @@ namespace BattleshipGUI
             Pen grayPen = new Pen(grayBrush, 8);
             int column = 0;
             int row = 0;
-            /*PrintOutFleetPositions();*/                                                //debugging purpose only
+            PrintOutFleetPositions();                                                //debugging purpose only
             for (int i = 0; i != 500; i += 50)
             {
                 for (int j = 0; j != 500; j += 50)
@@ -187,6 +187,8 @@ namespace BattleshipGUI
             //}
             fl.addShip(squaresToAddAndElim);                                           //dodaje u flotu sve shipove koji su random odabrani
             gr.eliminateSquares(squaresToAddAndElim);                                  //eliminira iz grida sve square-ove odabranih shipova
+            modelNmspc.squareTerminator terminator = new modelNmspc.squareTerminator(gr);
+            terminator.ToEliminate(squaresToAddAndElim);
                   }
     }
 }
