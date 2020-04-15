@@ -28,11 +28,12 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Grid g = new Grid(5, 1);
             var result = g.GetAvailablePlacements(3);
             Assert.AreEqual(3, result.Count());
-            
-
             foreach (var sequence in result)
+            {
                 Assert.AreEqual(3, sequence.Count());
-            
+            }
+
+
         }
         [TestMethod]
         public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength2InHorizontalGrid1x6AfterSquareIsEliminated()
@@ -52,9 +53,10 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             g.EliminateSquares(new List<Square> { new Square(1, 0) });
             var result = g.GetAvailablePlacements(2);
             Assert.AreEqual(2, result.Count());
-
             foreach (var sequence in result)
+            {
                 Assert.AreEqual(2, sequence.Count());
+            }
         }
     }
 }
