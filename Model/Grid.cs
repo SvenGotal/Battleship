@@ -24,12 +24,10 @@ namespace Vsite.Oom.Battleship.Model
             }
         }
 
-        public IEnumerable<Placement> GetAvaliablePlacements(int length)
+        public IEnumerable<Placement> GetAvailablePlacements(int length)
         {
             if (length != 1)
-            {
-                return GetAvalibleHorizontalPlacements(length).Concat(GetAvalibleVerticalPlacements(length));
-            }
+                return GetAvailableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length));
             List<List<Square>> result = new List<List<Square>>();
             for (int r = 0; r < Rows; ++r)
             {
@@ -50,7 +48,8 @@ namespace Vsite.Oom.Battleship.Model
             }
         }
 
-        private IEnumerable<Placement> GetAvalibleHorizontalPlacements(int length) {
+        private IEnumerable<Placement> GetAvailableHorizontalPlacements(int length) 
+        {
 
             var result = new List<List<Square>>();
 
@@ -73,10 +72,29 @@ namespace Vsite.Oom.Battleship.Model
             return result;
         }
         //TODO
-        private IEnumerable<Placement> GetAvalibleVerticalPlacements(int length)
+        private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
         {
-            return new List<Placement>();
+            var result = new List<List<Square>>();
+
+            for (int c = 0; c < Columns; ++c)
+            {
+                LimitedQueue<Square> passed = new LimitedQueue<Square>(length);
+                for (int r = 0; r < Rows; ++r)
+                {
+                    if (squares[r, c] != null)
+                        passed.Enqueue(squares[r, c]);
+                    else
+                        passed.Clear();
+
+                    if (passed.Count == length)
+                    {
+                        result.Add(passed.ToList());
+                    }
+                }
+            }
+            return result;
         }
+
         public readonly int Rows;
         public readonly int Columns;
 
