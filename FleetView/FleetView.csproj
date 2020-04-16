@@ -46,17 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FleetGrid.cs">
+    <Compile Include="FleetForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FleetGrid.Designer.cs">
-      <DependentUpon>FleetGrid.cs</DependentUpon>
+    <Compile Include="FleetForm.Designer.cs">
+      <DependentUpon>FleetForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFleet.cs">
+    <Compile Include="GridForFleet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFleet.Designer.cs">
-      <DependentUpon>FormFleet.cs</DependentUpon>
+    <Compile Include="GridForFleet.Designer.cs">
+      <DependentUpon>GridForFleet.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

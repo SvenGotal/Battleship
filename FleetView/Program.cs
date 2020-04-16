@@ -16,7 +16,7 @@ namespace FleetView
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new FormFleet());
+			Application.Run(new FleetForm());
 		}
 	}
 }

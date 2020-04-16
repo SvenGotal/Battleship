@@ -1,6 +1,6 @@
 ﻿namespace FleetView
 {
-	partial class FleetGrid
+	partial class FleetForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -20,7 +20,7 @@
 			base.Dispose(disposing);
 		}
 
-		#region Windows Form Designer generated code
+		#region Windows Form Designer generated code#region Windows Form Designer generated code
 
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -31,9 +31,12 @@
 			this.components = new System.ComponentModel.Container();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Text = "FleetGrid";
+			this.Text = "FleetForm";
 		}
 
 		#endregion
+
+		private GridForFleet gridForFleet;
+		private System.Windows.Forms.Button buttonAgrees;
 	}
 }
