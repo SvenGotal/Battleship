@@ -20,7 +20,7 @@
 			base.Dispose(disposing);
 		}
 
-		#region Windows Form Designer generated code#region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -28,31 +28,58 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.buttonAgrees = new System.Windows.Forms.Button();
-			this.gridForFleet = new FleetView.GridForFleet();
+			this.buttonQuit = new System.Windows.Forms.Button();
+			this.gridForFleet = new FleetView.GridForFleet(this.components);
 			this.SuspendLayout();
-			//grid for fleet
-			this.gridForFleet.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-			this.gridForFleet.Name = "gridForFleet";
-			this.gridForFleet.Text = "gridForFleet";
-			this.gridForFleet.Location = new System.Drawing.Point(10, 10);
-			this.gridForFleet.Size = new System.Drawing.Size(400, 400);
-			this.gridForFleet.TabIndex = 0;
-			//button
-			this.buttonAgrees.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			// 
+			// buttonAgrees
+			// 
+			this.buttonAgrees.Location = new System.Drawing.Point(10, 415);
 			this.buttonAgrees.Name = "buttonAgrees";
-			this.buttonAgrees.Text = "&Arrange";
-			this.buttonAgrees.Location = new System.Drawing.Point(318, 415);
-			this.buttonAgrees.Size = new System.Drawing.Size(80, 25);
+			this.buttonAgrees.Size = new System.Drawing.Size(100, 30);
 			this.buttonAgrees.TabIndex = 1;
+			this.buttonAgrees.Text = "&Arrange";
 			this.buttonAgrees.UseVisualStyleBackColor = true;
 			this.buttonAgrees.Click += new System.EventHandler(this.buttonAgreesOnClick);
-			
+			// 
+			// buttonQuit
+			// 
+			this.buttonQuit.Location = new System.Drawing.Point(300, 415);
+			this.buttonQuit.Name = "buttonQuit";
+			this.buttonQuit.Size = new System.Drawing.Size(100, 30);
+			this.buttonQuit.TabIndex = 2;
+			this.buttonQuit.Text = "Quit";
+			this.buttonQuit.UseVisualStyleBackColor = true;
+			this.buttonQuit.Click += new System.EventHandler(this.buttonQuitOnClick);
+			// 
+			// gridForFleet
+			// 
+			this.gridForFleet.Location = new System.Drawing.Point(10, 10);
+			this.gridForFleet.Name = "gridForFleet";
+			this.gridForFleet.Size = new System.Drawing.Size(400, 400);
+			this.gridForFleet.TabIndex = 0;
+			this.gridForFleet.Text = "gridForFleet";
+			// 
+			// FleetForm
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(410, 450);
+			this.Controls.Add(this.buttonQuit);
+			this.Controls.Add(this.buttonAgrees);
+			this.Controls.Add(this.gridForFleet);
+			this.Name = "FleetForm";
+			this.Text = "Fleet";
+			this.ResumeLayout(false);
+
 		}
 
 		#endregion
 
 		private GridForFleet gridForFleet;
 		private System.Windows.Forms.Button buttonAgrees;
+		private System.Windows.Forms.Button buttonQuit;
 	}
 }

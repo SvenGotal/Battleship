@@ -53,13 +53,16 @@
       <DependentUpon>FleetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="GridForFleet.cs">
-      <SubType>Form</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="GridForFleet.Designer.cs">
       <DependentUpon>GridForFleet.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FleetForm.resx">
+      <DependentUpon>FleetForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -20,7 +20,7 @@
 			base.Dispose(disposing);
 		}
 
-		#region Windows Form Designer generated code
+		#region #region Windows Form Designer generated code
 
 		/// <summary>
 		/// Required method for Designer support - do not modify
@@ -28,10 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 450);
-			this.Text = "GridForFleet";
+			components = new System.ComponentModel.Container();
 		}
 
 		#endregion
