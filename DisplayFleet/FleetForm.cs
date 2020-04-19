@@ -11,6 +11,7 @@ using Vsite.Oom.Battleship.Model;
 
 
 
+
 namespace DisplayFleet
 {
     public partial class FleetForm : Form
@@ -37,5 +38,7 @@ namespace DisplayFleet
         {
             Application.Exit();
         }
+
+        
     }
 }

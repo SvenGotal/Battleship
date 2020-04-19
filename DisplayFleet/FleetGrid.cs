@@ -103,8 +103,8 @@ namespace DisplayFleet
         private int FieldWidth { get { return (ClientRectangle.Width - 1) / Rows; } }
         private int FieldHeight{ get { return (ClientRectangle.Height - 1) / Columns; } }
 
-        private Pen gridLiner = new Pen(SystemColors.ActiveBorder);
-        private Brush shipColors = new SolidBrush(Color.IndianRed);
+        private Pen gridLiner = new Pen(SystemColors.MenuHighlight);
+        public Brush shipColors = new SolidBrush(Color.Black);
     }
 }
 

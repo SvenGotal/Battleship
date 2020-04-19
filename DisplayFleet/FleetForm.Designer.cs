@@ -50,6 +50,7 @@
             this.fleetGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.fleetGrid.BackColor = System.Drawing.Color.Aqua;
             this.fleetGrid.Location = new System.Drawing.Point(13, 95);
             this.fleetGrid.Name = "fleetGrid";
             this.fleetGrid.Size = new System.Drawing.Size(381, 343);
@@ -58,8 +59,8 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(170, 48);
-            this.button1.Name = "quitGame";
+            this.button1.Location = new System.Drawing.Point(294, 48);
+            this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Quit Game";
