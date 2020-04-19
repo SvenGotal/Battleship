@@ -33,7 +33,8 @@ namespace Vsite.Oom.Battleship.Model
                         int index = random.Next(0, placements.Count());
                         fleet.AddShip(placements.ElementAt(index));
                         var toEliminate = terminator.ToEliminate(placements.ElementAt(index));
-                        if (lengths.Count == 0)
+                        grid.EliminateSquares(toEliminate);
+                    if (lengths.Count == 0)
                             return fleet;
                     }
                 }
