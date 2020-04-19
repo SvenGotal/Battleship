@@ -33,6 +33,9 @@
             // 
             // guiPanel1
             // 
+            this.guiPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.guiPanel1.Location = new System.Drawing.Point(383, 12);
             this.guiPanel1.Name = "guiPanel1";
             this.guiPanel1.Size = new System.Drawing.Size(405, 426);
@@ -45,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.guiPanel1);
             this.Name = "GuiForm";
-            this.Text = "Form1";
+            this.Text = "Battleship";
             this.ResumeLayout(false);
 
         }
