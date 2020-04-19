@@ -14,60 +14,74 @@ namespace Vsite.Oom.Battleship.Model
             Rows = rows;
             Columns = columns;
             squares = new Square[Rows, Columns];
-
-            for(int r = 0; r < Rows; ++r)
+            for (int r = 0; r < Rows; ++r)
             {
-                for(int c = 0; c < Columns; ++c)
-                {
+                for (int c = 0; c < Columns; ++c)
                     squares[r, c] = new Square(r, c);
-                }
             }
         }
+
         public IEnumerable<Placement> GetAvailablePlacements(int length)
         {
-            if(length == 1)
+            if (length != 1)
             {
-                List<List<Square>> result = new List<List<Square>>();
-                for (int r = 0; r < Rows; ++r)
-                {
-                    for (int c = 0; c < Columns; ++c)
-                    {
-                        if(squares[r,c] != null)
-                            result.Add(new List<Square> { squares[r,c] });
-                    }
-                }
-                return result;
+                return GetAvailableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length));
             }
-            return GetAvailaibleHorizontalPlacements(length).Concat(GetAvailaibleVerticalPlacements(length));
+
+            List<List<Square>> result = new List<List<Square>>();
+            for (int r = 0; r < Rows; ++r)
+            {
+                for (int c = 0; c < Columns; ++c)
+                {
+                    if (squares[r, c] != null)
+                        result.Add(new List<Square> { squares[r, c] });
+                }
+            }
+            return result;
         }
+
         public void EliminateSquares(Placement toEliminate)
         {
             foreach (var square in toEliminate)
                 squares[square.Row, square.Column] = null;
         }
-        private IEnumerable<Placement> GetAvailaibleHorizontalPlacements (int length)
+
+        private IEnumerable<Placement> GetAvailableHorizontalPlacements(int length)
         {
             var result = new List<List<Square>>();
-            for(int r = 0; r < Rows; ++r)
+            for (int r = 0; r < Rows; ++r)
             {
                 LimitedQueue<Square> passed = new LimitedQueue<Square>(length);
-                for(int c = 0; c < Columns; ++c)
+                for (int c = 0; c < Columns; ++c)
                 {
                     if (squares[r, c] != null)
-                       passed.Enqueue(squares[r, c]);
+                        passed.Enqueue(squares[r, c]);
                     else
                         passed.Clear();
-                    if(passed.Count == length)
-                    {
+                    if (passed.Count == length)
                         result.Add(passed.ToList());
-                    }
                 }
             }
             return result;
         }
-        private IEnumerable<Placement> GetAvailaibleVerticalPlacements(int length)
+
+        private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
         {
-            return new List<Placement>();
+            var result = new List<List<Square>>();
+            for (int c = 0; c < Columns; ++c)
+            {
+                LimitedQueue<Square> passed = new LimitedQueue<Square>(length);
+                for (int r = 0; r < Rows; ++r)
+                {
+                    if (squares[r, c] != null)
+                        passed.Enqueue(squares[r, c]);
+                    else
+                        passed.Clear();
+                    if (passed.Count == length)
+                        result.Add(passed.ToList());
+                }
+            }
+            return result;
         }
 
         public readonly int Rows;
