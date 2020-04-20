@@ -19,7 +19,7 @@ namespace Vsite.Oom.Battleship.Gui
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
         }
 
-        public void SetSize(int rows, int cols, Fleet f)
+        public void SetSize(int rows, int cols, ref Fleet f)
         {
             m_rows = rows + 1;
             m_cols = cols + 1;

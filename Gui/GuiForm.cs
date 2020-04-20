@@ -21,15 +21,15 @@ namespace Vsite.Oom.Battleship.Gui
         public void InitGrid()
         {
             //Testing drawing grid
-            int rows = 10;
-            int cols = 10;
+            int rows = 20;
+            int cols = 20;
 
             Shipwright sw = new Shipwright(rows, cols);
             IEnumerable<int> ships = new int[] { 2, 2, 2, 2, 3, 3, 3, 4, 4, 5 };
             Fleet fleet = new Fleet();
             fleet = sw.CreateFleet(ships);
 
-            guiPanel1.SetSize(rows, cols, fleet);
+            guiPanel1.SetSize(rows, cols, ref fleet);
           //--------------------------------------------------------------------------
         }
 
