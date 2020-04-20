@@ -16,7 +16,6 @@ namespace Vsite.Oom.Battleship.Gui
         public GuiForm()
         {
             InitializeComponent();
-            InitGrid();
         }
 
         public void InitGrid()
@@ -32,6 +31,11 @@ namespace Vsite.Oom.Battleship.Gui
 
             guiPanel1.SetSize(rows, cols, fleet);
           //--------------------------------------------------------------------------
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            InitGrid();
         }
     }
 }

@@ -21,8 +21,8 @@ namespace Vsite.Oom.Battleship.Gui
 
         public void SetSize(int rows, int cols, Fleet f)
         {
-            m_rows += rows;
-            m_cols += cols;
+            m_rows = rows + 1;
+            m_cols = cols + 1;
             m_fleet = f;
         }
 
@@ -30,7 +30,9 @@ namespace Vsite.Oom.Battleship.Gui
         {
             base.OnPaint(e);
             DrawGrid(e.Graphics);
-            FillShipSquares(e.Graphics);
+            if (m_fleet != null)
+                FillShipSquares(e.Graphics);
+            Invalidate();
         }
 
         private void DrawGrid(Graphics graphics)
@@ -81,8 +83,8 @@ namespace Vsite.Oom.Battleship.Gui
         }
 
         private Fleet m_fleet;
-        private int m_rows=1;
-        private int m_cols=1;
+        private int m_rows;
+        private int m_cols;
         private float m_cell_height;
         private float m_cell_width;
     }
