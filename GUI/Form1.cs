@@ -17,43 +17,17 @@ namespace Vsite.Oom.Battleship.GUI
         public BattleshipsGUI()
         {
             InitializeComponent();
-            g = DrawPanel.CreateGraphics();
         }
 
         private void drawButton_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.LightBlue);
-            DrawFleet();
-        }
-
-
-        private void DrawFleet()
-        {
-            myPen = new Pen(Color.Black, 2);
-            myBrush = new SolidBrush(Color.DimGray);
-            float x = 0f;
-            float y = 0f;
             if (Int32.TryParse(numberOfLinesTextBox.Text, out numOfLines) && (numOfLines > 9 && numOfLines < 21))
             {
-                distanceBetweenLines =  DrawPanel.Height / (float) numOfLines;
                 errorMessage.Visible = false;
-                for (int i = 0; i < numOfLines + 1; ++i)
-                {
-                    g.DrawLine(myPen, x, y, x, distanceBetweenLines * numOfLines);
-                    x += distanceBetweenLines;
-                }
-
-                x = 0f;
-                y = 0f;
-
-                for (int i = 0; i < numOfLines + 1; ++i)
-                {
-                    g.DrawLine(myPen, x, y, distanceBetweenLines * numOfLines, y);
-                    y += distanceBetweenLines;
-                }
-
-                DrawShips();
-
+                drawPanel1.Lines = numOfLines;
+                drawPanel1.Shipwright = new Shipwright(drawPanel1.Lines, drawPanel1.Lines);
+                drawPanel1.Fleet = drawPanel1.Shipwright.CreateFleet(new int[] {5, 4, 4, 3, 3, 3, 2, 2, 2, 2});
+                drawPanel1.Invalidate();
             }
             else
             {
@@ -61,24 +35,6 @@ namespace Vsite.Oom.Battleship.GUI
             }
         }
 
-        public void DrawShips()
-        {
-            Shipwright sw = new Shipwright(numOfLines,numOfLines);
-            var fleet = sw.CreateFleet(new int[] {5, 4, 4, 3, 3, 3, 2, 2, 2, 2});
-
-            foreach (var ship in fleet.Ships)
-            {
-                foreach (var square in ship.Squares)
-                {
-                    g.FillRectangle(myBrush,square.Column * distanceBetweenLines,square.Row * distanceBetweenLines,distanceBetweenLines,distanceBetweenLines);
-                }
-            }
-        }
-
-        private Pen myPen;
-        private Brush myBrush;
-        private Graphics g;
         private int numOfLines;
-        private float distanceBetweenLines;
     }
 }

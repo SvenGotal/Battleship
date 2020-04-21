@@ -28,21 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DrawPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.numberOfLines = new System.Windows.Forms.Label();
             this.numberOfLinesTextBox = new System.Windows.Forms.TextBox();
             this.drawButton = new System.Windows.Forms.Button();
             this.errorMessage = new System.Windows.Forms.Label();
+            this.drawPanel1 = new Vsite.Oom.Battleship.GUI.DrawPanel();
             this.SuspendLayout();
-            // 
-            // DrawPanel
-            // 
-            this.DrawPanel.Location = new System.Drawing.Point(12, 12);
-            this.DrawPanel.MaximumSize = new System.Drawing.Size(400, 400);
-            this.DrawPanel.MinimumSize = new System.Drawing.Size(400, 400);
-            this.DrawPanel.Name = "DrawPanel";
-            this.DrawPanel.Size = new System.Drawing.Size(400, 400);
-            this.DrawPanel.TabIndex = 0;
             // 
             // numberOfLines
             // 
@@ -82,16 +73,28 @@
             this.errorMessage.Text = "Enter the number between 10 and 20 !";
             this.errorMessage.Visible = false;
             // 
+            // drawPanel1
+            // 
+            this.drawPanel1.Fleet = null;
+            this.drawPanel1.Lines = 10;
+            this.drawPanel1.Location = new System.Drawing.Point(13, 13);
+            this.drawPanel1.MaximumSize = new System.Drawing.Size(400, 400);
+            this.drawPanel1.MinimumSize = new System.Drawing.Size(400, 400);
+            this.drawPanel1.Name = "drawPanel1";
+            this.drawPanel1.Shipwright = null;
+            this.drawPanel1.Size = new System.Drawing.Size(400, 400);
+            this.drawPanel1.TabIndex = 7;
+            // 
             // BattleshipsGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(664, 431);
+            this.Controls.Add(this.drawPanel1);
             this.Controls.Add(this.errorMessage);
             this.Controls.Add(this.drawButton);
             this.Controls.Add(this.numberOfLinesTextBox);
             this.Controls.Add(this.numberOfLines);
-            this.Controls.Add(this.DrawPanel);
             this.DoubleBuffered = true;
             this.MaximumSize = new System.Drawing.Size(680, 470);
             this.MinimumSize = new System.Drawing.Size(680, 470);
@@ -104,12 +107,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel DrawPanel;
         private System.Windows.Forms.Label numberOfLines;
         private System.Windows.Forms.TextBox numberOfLinesTextBox;
         private System.Windows.Forms.Button drawButton;
         private System.Windows.Forms.Label errorMessage;
+        private DrawPanel drawPanel1;
     }
 }
 
