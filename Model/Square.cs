@@ -12,6 +12,7 @@ namespace Vsite.Oom.Battleship.Model
         {
             Row = row;
             Column = column;
+            Hit = false;
         }
 
         public readonly int Row;
@@ -24,6 +25,11 @@ namespace Vsite.Oom.Battleship.Model
                 return false;
             }
             return Row == other.Row && Column == other.Column;
+        }
+
+        public bool Hit
+        {
+            get; set;
         }
         public override bool Equals(object obj)
         {

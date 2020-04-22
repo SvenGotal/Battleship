@@ -14,13 +14,13 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.AreEqual(0, q.Count);
             q.Enqueue(1);
             Assert.AreEqual(1, q.Count);
-            q.Enqueue(2);
+            q.Enqueue(1);
             Assert.AreEqual(2, q.Count);
-            q.Enqueue(3);
+            q.Enqueue(1);
             Assert.AreEqual(3, q.Count);
-            q.Enqueue(4);
+            q.Enqueue(1);
             Assert.AreEqual(3, q.Count);
-            Assert.IsFalse(q.Contains(1));
+            q.Enqueue(1);
         }
     }
 }

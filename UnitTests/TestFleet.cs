@@ -14,10 +14,12 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
         {
             Fleet fleet = new Fleet();
             fleet.AddShip(new List<Square> { new Square(1, 4), new Square(1, 5), new Square(1, 6) });
+            
             Assert.AreEqual(1, fleet.Ships.Count());
-            Assert.IsTrue(fleet.Ships.First().Squares.Contains(new Square(1, 4)));
-            Assert.IsTrue(fleet.Ships.First().Squares.Contains(new Square(1, 5)));
             Assert.IsTrue(fleet.Ships.First().Squares.Contains(new Square(1, 6)));
+            Assert.IsTrue(fleet.Ships.First().Squares.Contains(new Square(1, 5)));
+            Assert.IsTrue(fleet.Ships.First().Squares.Contains(new Square(1, 4)));
+           
             fleet.AddShip(new List<Square> { new Square(4, 5), new Square(5, 5), new Square(6, 5) });
             Assert.AreEqual(2, fleet.Ships.Count());
         }
