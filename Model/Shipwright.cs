@@ -16,34 +16,42 @@ namespace Vsite.Oom.Battleship.Model
 
            for(int i = 0; i<3;++i)
             {
-
-                List<int> lenghts = new List<int>(shipLenght.OrderByDescending(x => x));
-
-                grid = new Grid(rows, columns);
-                SquareTerminator terminator = new SquareTerminator(grid);
-
-                Fleet fleet = new Fleet();
-
-                while (lenghts.Count > 0)
-                {
-                    var placments = grid.GetAvailablePlacements(lenghts[0]);
-                    if (placments.Count() == 0)
-                        break;
-                    lenghts.RemoveAt(0);
-
-                    int index = random.Next(0, placments.Count());
-
-                    fleet.AddShip(placments.ElementAt(index));
-                    // 6. eliminate squares form grid
-                    var toEliminate = terminator.ToEliminate(placments.ElementAt(index));
-                    grid.EliminateSquares(toEliminate);
-                    if (lenghts.Count == 0)
-                        return fleet;
-                }
+                Fleet fleet = PlaceShips(shipLenght);
+                if (fleet != null)
+                    return fleet;
+              
             }
            
             
             throw new ArgumentOutOfRangeException();
+        }
+
+        private Fleet PlaceShips(IEnumerable<int> shipLenght) {
+            
+            List<int> lenghts = new List<int>(shipLenght.OrderByDescending(x => x));
+
+            grid = new Grid(rows, columns);
+            SquareTerminator terminator = new SquareTerminator(grid);
+
+            Fleet fleet = new Fleet();
+
+            while (lenghts.Count > 0)
+            {
+                var placments = grid.GetAvailablePlacements(lenghts[0]);
+                if (placments.Count() == 0)
+                    return null;
+                    
+                lenghts.RemoveAt(0);
+
+                int index = random.Next(0, placments.Count());
+
+                fleet.AddShip(placments.ElementAt(index));
+                // 6. eliminate squares form grid
+                var toEliminate = terminator.ToEliminate(placments.ElementAt(index));
+                grid.EliminateSquares(toEliminate);
+                
+            }
+            return fleet;
         }
 
         private readonly int rows;
