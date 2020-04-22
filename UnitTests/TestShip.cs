@@ -17,5 +17,45 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.IsTrue(ship.Squares.Contains(new Square(1, 6)));
 
         }
+
+        [TestMethod]
+        public void HitMethodOnFirstSquareReturnsHitResultHit()
+        {
+            {
+                Ship ship = new Ship(new List<Square> { new Square(1, 4), new Square(1, 5), new Square(1, 6) });
+                var result = ship.Hit(new Square(1, 5));
+                Assert.AreEqual(Model.Ship.HitResult.Hit, result);
+
+            }
+            {
+                Ship ship = new Ship(new List<Square> { new Square(1, 4), new Square(1, 5), new Square(1, 6) });
+                var result = ship.Hit(new Square(1, 4));
+                Assert.AreEqual(Model.Ship.HitResult.Hit, result);
+            }
+            {
+                Ship ship = new Ship(new List<Square> { new Square(1, 4), new Square(1, 5), new Square(1, 6) });
+                var result = ship.Hit(new Square(1, 6));
+                Assert.AreEqual(Model.Ship.HitResult.Hit, result);
+            }
+        }
+
+        [TestMethod]
+        public void HitMethodOnMissedSquareReturnsHitResultMiss()
+        {
+
+            Ship ship = new Ship(new List<Square> { new Square(1, 4), new Square(1, 5), new Square(1, 6) });
+            var result = ship.Hit(new Square(2, 5));
+            Assert.AreEqual(Model.Ship.HitResult.Missed, result);
+        }
+
+        [TestMethod]
+        public void HitMethodOnLastSquareReturnsHitResultSunk()
+        {
+            Ship ship = new Ship(new List<Square> { new Square(1, 4), new Square(1, 5), new Square(1, 6) });
+            var result = ship.Hit(new Square(1, 4));
+            result = ship.Hit(new Square(1, 5));
+            result = ship.Hit(new Square(1, 6));
+            Assert.AreEqual(Model.Ship.HitResult.Sunk, result);
+        }
     }
 }
