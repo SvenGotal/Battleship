@@ -12,38 +12,46 @@ namespace Vsite.Oom.Battleship.Model
             this.columns = columns;
         }
 
-        public Fleet CreateFleet(IEnumerable<int> shipLenths)
+        public Fleet CreateFleet(IEnumerable<int> shipLengths)
         {
-            Fleet fleet = new Fleet();
-
             for( int i = 0; i < 3; ++i)
             {
-                List<int> lenghts = new List<int>(shipLenths.OrderByDescending(s => s));
-                grid = new Grid(rows, columns);
-                var terminator = new SquareTerminator(grid);
-
-                while (lenghts.Count > 0)
+                var fleet = TryPlaceShips(shipLengths);
+                if (fleet != null)
                 {
-                    var placements = grid.GetAvailablePlacements(lenghts[0]);
-                    if (placements.Count() == 0) break;
-
-                    lenghts.RemoveAt(0);
-
-                    int index = random.Next(0, placements.Count());
-                    fleet.AddShip(placements.ElementAt(index));
-
-                    var toEliminate = terminator.ToEliminate(placements.ElementAt(index));
-                    grid.EliminateSqure(toEliminate);
-
-                    if (lenghts.Count() == 0) return fleet;
+                    return fleet;
                 }
             }
             throw new ArgumentOutOfRangeException(); ;
         }
 
+        private Fleet TryPlaceShips(IEnumerable<int> shipLengths)
+        {
+            var lenghts = new List<int>(shipLengths.OrderByDescending(s => s));
+            var grid = new Grid(rows, columns);
+            var terminator = new SquareTerminator(grid);
+            var fleet = new Fleet();
+            var random = new Random();
+
+            while (lenghts.Count > 0)
+            {
+                var placements = grid.GetAvailablePlacements(lenghts[0]);
+                if (placements.Count() == 0) break;
+
+                lenghts.RemoveAt(0);
+
+                int index = random.Next(0, placements.Count());
+                fleet.AddShip(placements.ElementAt(index));
+
+                var toEliminate = terminator.ToEliminate(placements.ElementAt(index));
+                grid.EliminateSqure(toEliminate);
+
+                if (lenghts.Count() == 0) return fleet;
+            }
+            return fleet;
+        }
+
         private readonly int rows;
         private readonly int columns;
-        private Grid grid;
-        public Random random = new Random();
     }
 }
