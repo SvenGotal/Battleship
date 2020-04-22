@@ -9,7 +9,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
     public class TestGrid
     {
         [TestMethod]
-        public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength3InHorizontalFrid1x4()
+        public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength3InHorizontalGrid1x4()
         {
             Grid g = new Grid(1, 4);
             var result = g.GetAvailablePlacements(3);
@@ -18,7 +18,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.AreEqual(3, result.Last().Count());
         }
         [TestMethod]
-        public void GetAvailablePlacementsForShipReturns3PlacementsForShipOfLength3InHorizontalFrid5x1()
+        public void GetAvailablePlacementsForShipReturns3PlacementsForShipOfLength3InVerticalGrid5x1()
         {
             Grid g = new Grid(5,1);
             var result = g.GetAvailablePlacements(3);
@@ -27,7 +27,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
                Assert.AreEqual(3, sequence.Count());
         }
         [TestMethod]
-        public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength2InHorizontalFrid1x6AfterSquareIsEliminated()
+        public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength2InHorizontalGrid1x6AfterSquareIsEliminated()
         {
             Grid g = new Grid(1, 6);
             g.EliminateSquares(new List<Square> { new Square(0, 2) });
@@ -35,14 +35,14 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.AreEqual(3, result.Count());
         }
         [TestMethod]
-        public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength3InHorizontalFrid5x1AfterSquareIsEliminated()
+        public void GetAvailablePlacementsForShipReturns2PlacementsForShipOfLength3InVerticalGrid5x1AfterSquareIsEliminated()
         {
             Grid g = new Grid(5, 1);
             g.EliminateSquares(new List<Square> { new Square(1,0) });
             var result = g.GetAvailablePlacements(2);
             Assert.AreEqual(2, result.Count());
             foreach (var sequence in result)
-                Assert.AreEqual(3, sequence.Count());
+                Assert.AreEqual(2, sequence.Count());
         }
     }
 }

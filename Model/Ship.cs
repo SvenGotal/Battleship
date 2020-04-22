@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
+    public enum HitResult
+    {
+        Missed,
+        Hit,
+        Sunken
+    }
     public class Ship
     {
-        public enum HitResult
-        {
-            Missed,
-            Hit,
-            Sunken
-        }
+        
         public Ship(IEnumerable<Square> squares)
         {
             this.Squares = squares;
