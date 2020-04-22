@@ -15,6 +15,7 @@ namespace Vsite.Oom.Battleship.Model
         {
             Row = row;
             Column = column;
+            Hit = false;
         }
 
         public bool Equals(Square other)
@@ -33,6 +34,8 @@ namespace Vsite.Oom.Battleship.Model
             return Equals((Square)obj);
         }
 
+        public bool Hit
+        {  get;set;   }
         public override int GetHashCode()
         {
             return Row ^ Column;
