@@ -65,7 +65,23 @@ namespace Vsite.Oom.Battleship.Model
         }
         private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
         {
-            return new List<Placement>();
+            var result = new List<List<Square>>();
+            for (int c = 0; c < Columns; ++c)
+            {
+                LimitedQueue<Square> passed = new LimitedQueue<Square>(length);
+                for (int r = 0; r < Rows; ++r)
+                {
+                    if (squares[r, c] != null)
+                        passed.Enqueue(squares[r, c]);
+                    else
+                        passed.Clear();
+                    if (passed.Count == length)
+                    {
+                        result.Add(passed.ToList());
+                    }
+                }
+            }
+            return result;
         }
 
         public readonly int Rows;
