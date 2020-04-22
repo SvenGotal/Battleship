@@ -25,11 +25,11 @@ namespace Vsite.Oom.Battleship.Model
             if (top > 0)
                 --top;
 
-            int right = shipSquares.First().Column + 1;
+            int right = shipSquares.Last().Column + 1;
             if (right < grid.Columns)
                 ++right;
 
-            int bottom = shipSquares.First().Row + 1;
+            int bottom = shipSquares.Last().Row + 1;
             if (bottom < grid.Rows)
                 ++bottom;
 
@@ -43,7 +43,7 @@ namespace Vsite.Oom.Battleship.Model
                 }
             }
 
-            throw new NotImplementedException();
+            return toEliminate;
         }
 
     }

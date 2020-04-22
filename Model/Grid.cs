@@ -27,7 +27,7 @@ namespace Vsite.Oom.Battleship.Model
         {
             if (length != 1)
             {
-                return GetAvailableHorizontalPlacements(length); GetAvailableVerticalPlacements(length);
+                return GetAvailableHorizontalPlacements(length).Concat(GetAvailableVerticalPlacements(length));
             }
 
             List<List<Square>> result = new List<List<Square>>();
@@ -78,7 +78,31 @@ namespace Vsite.Oom.Battleship.Model
 
         private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
         {
-            return new List<Placement>();
+
+            var result = new List<List<Square>>();
+            for (int c = 0; c < Columns; c++)
+            {
+                LimitedQueue<Square> q = new LimitedQueue<Square>(length);
+                for (int r = 0; r < Rows; r++)
+                {
+                    if (squares[r, c] != null)
+                    {
+                        q.Enqueue(squares[r, c]);
+                    }
+                    else
+                    {
+                        q.Clear();
+                    }
+                    if (q.Count == length)
+                    {
+                        result.Add(q.ToList());
+                    }
+                }
+            }
+
+            return result;
+
+
         }
 
         public readonly int Rows;
