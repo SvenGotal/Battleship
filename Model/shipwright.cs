@@ -28,9 +28,10 @@ namespace Vsite.Oom.Battleship.Model
         private fleet placeShips(IEnumerable<int> shipLengths)
         {
             List<int> lengths = new List<int>(shipLengths.OrderByDescending(x => x));
-            grid = new Grid(rows, columns);
+            Grid grid = new Grid(rows, columns);
             squareTerminator terminator = new squareTerminator(grid);
             fleet Fleet = new fleet();
+            Random rand = new Random();
             while (lengths.Count() > 0)
             {
                 var placements = grid.GetAvailablePlacements(lengths[0]);
@@ -45,7 +46,5 @@ namespace Vsite.Oom.Battleship.Model
         }
         private readonly int rows;
         private readonly int columns;
-        private Grid grid;
-        private Random rand = new Random();
     }
 }
