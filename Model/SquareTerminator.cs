@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    class SquareTerminator
+    public class SquareTerminator
     {
         public SquareTerminator(Grid grid)
         {

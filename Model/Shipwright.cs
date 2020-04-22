@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vsite.Oom.Battleship.Model
 {
-    class Shipwright
+   public class Shipwright
     {
         public Shipwright(int rows, int columns)
         {
