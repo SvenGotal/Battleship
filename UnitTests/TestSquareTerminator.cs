@@ -26,7 +26,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
         {
             Grid grid = new Grid(10, 10);
             SquareTerminator terminator = new SquareTerminator(grid);
-            var toEliminate = terminator.ToEliminate(new List<Square> { new Square(0, 3), new Square(4, 4)});
+            var toEliminate = terminator.ToEliminate(new List<Square> { new Square(0, 3), new Square(0, 4)});
             Assert.AreEqual(8, toEliminate.Count());
             Assert.IsTrue(toEliminate.Contains(new Square(0, 2)));
             Assert.IsTrue(toEliminate.Contains(new Square(1, 2)));
@@ -50,8 +50,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
         {
             Grid grid = new Grid(10, 10);
             SquareTerminator terminator = new SquareTerminator(grid);
-            var toEliminate = terminator.ToEliminate(new List<Square> { new Square(4, 3), new Square(4, 4),
-                                                        new Square(4, 5), new Square(4, 6) });
+            var toEliminate = terminator.ToEliminate(new List<Square> { new Square(8, 9), new Square(9, 9) });
             Assert.AreEqual(6, toEliminate.Count());
             Assert.IsTrue(toEliminate.Contains(new Square(7,8)));
             Assert.IsTrue(toEliminate.Contains(new Square(7,9)));
