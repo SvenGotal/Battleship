@@ -12,10 +12,12 @@ namespace Vsite.Oom.Battleship.Model
         {
             Row = row;
             Column = column;
+            Hit = false;
         }
 
         public readonly int Row;
         public readonly int Column;
+        public bool hit;
 
         public bool Equals(Square other)
         {
@@ -46,6 +48,13 @@ namespace Vsite.Oom.Battleship.Model
         public static bool operator!=(Square lhs, Square rhs)
         {
             return !(lhs == rhs);
+        }
+
+        public bool Hit
+        {
+            get;
+            set;
+
         }
 
     }
