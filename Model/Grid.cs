@@ -71,7 +71,7 @@ namespace Vsite.Oom.Battleship.Model
             }
             return result;
         }
-        //TODO
+        
         private IEnumerable<Placement> GetAvailableVerticalPlacements(int length)
         {
             var result = new List<List<Square>>();

@@ -18,7 +18,6 @@ namespace Vsite.Oom.Battleship.Model
             base.Enqueue(item);
             while (this.Count > length)
                 Dequeue();         
-
         }
 
         private readonly int length;
