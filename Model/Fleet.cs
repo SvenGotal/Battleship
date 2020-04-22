@@ -21,5 +21,20 @@ namespace Vsite.Oom.Battleship.Model
             get { return ships; }
         }
 
+        public HitResult Hit(Square square)
+        {
+
+            foreach (Ship ship in ships)
+            {
+                HitResult hit = ship.Hit(square);
+
+                if( hit != HitResult.Missed)
+                {
+                    return hit;
+                }
+                
+            }
+            return HitResult.Missed;
+        }
     }
 }
