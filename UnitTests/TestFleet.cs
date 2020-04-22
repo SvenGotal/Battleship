@@ -18,7 +18,8 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.IsTrue(fleet.Ships.First().Squares.Contains(new Square(1, 5)));
             Assert.IsTrue(fleet.Ships.First().Squares.Contains(new Square(1, 6)));
 
-
+            fleet.AddShip(new List<Square> { new Square(4, 5), new Square(5, 5), new Square(6, 5) });
+            Assert.AreEqual(2, fleet.Ships.Count());
         }
     }
 }
