@@ -16,6 +16,7 @@ namespace BattleshipGUI
     {
         private modelNmspc.Grid gr = new modelNmspc.Grid(10, 10);
         private modelNmspc.fleet fl = new modelNmspc.fleet();
+        private Random random = new Random();
         public Form1()
         {
             InitializeComponent();
@@ -140,7 +141,7 @@ namespace BattleshipGUI
 
         private int ChooseRandomShipPositions_AddToFleet_Eliminate(IEnumerable<IEnumerable<modelNmspc.Square>> availablePositions)
         {
-            Random random = new Random();
+            
             int result = availablePositions.Count();
             int randomPosition = random.Next(0, result);
             int counter = 0;
