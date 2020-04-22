@@ -19,6 +19,8 @@ namespace Vsite.Oom.Battleship.Model
 
         public bool Equals(Square other)
         {
+            if (other == null)
+                return false;
             return Row == other.Row && Column == other.Column;
         }
         public override bool Equals(object obj)
@@ -30,10 +32,19 @@ namespace Vsite.Oom.Battleship.Model
                 return false;
 
             return Equals((Square)obj);
-        }
+        }        
         public override int GetHashCode()
         {
             return Row ^ Column;
+        }
+        public static bool operator ==(Square lhs, Square rhs)
+        {
+            return Equals(lhs, rhs);
+        }
+
+        public static bool operator !=(Square lhs, Square rhs)
+        {
+            return !(lhs == rhs);
         }
     }
 }
