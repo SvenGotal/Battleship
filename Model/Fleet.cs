@@ -29,7 +29,7 @@ namespace Vsite.Oom.Battleship.Model
             }
             return HitResult.Missed;
         }
-
+        //komentar
         private List<Ship> ships = new List<Ship>();
     }
 }
