@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "..\..\Battleship2\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "..\..\Battleship2\UnitTests\UnitTests.csproj", "{9A76D2F3-E740-4E59-BFB4-D2DF1C54AF01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIFleetArrangeKolokvij", "..\..\battleShipX\GUIFleetArrangeKolokvij\GUIFleetArrangeKolokvij.csproj", "{4BDE1D56-50C6-4988-9C3E-1C187020F451}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUIkolokvijZad", "..\..\Battleship2\ArrangeFleetGUI\GUIkolokvijZad.csproj", "{651BD823-60F6-4C54-89CC-497EF3B16DD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{9A76D2F3-E740-4E59-BFB4-D2DF1C54AF01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A76D2F3-E740-4E59-BFB4-D2DF1C54AF01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A76D2F3-E740-4E59-BFB4-D2DF1C54AF01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4BDE1D56-50C6-4988-9C3E-1C187020F451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4BDE1D56-50C6-4988-9C3E-1C187020F451}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4BDE1D56-50C6-4988-9C3E-1C187020F451}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4BDE1D56-50C6-4988-9C3E-1C187020F451}.Release|Any CPU.Build.0 = Release|Any CPU
+		{651BD823-60F6-4C54-89CC-497EF3B16DD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{651BD823-60F6-4C54-89CC-497EF3B16DD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{651BD823-60F6-4C54-89CC-497EF3B16DD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{651BD823-60F6-4C54-89CC-497EF3B16DD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
