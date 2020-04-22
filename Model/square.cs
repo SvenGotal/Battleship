@@ -12,6 +12,7 @@ namespace Vsite.Oom.Battleship.Model
         {
             row = r;
             column = c;
+            Hit = false;
         }
         public readonly int row;
         public readonly int column;
@@ -37,7 +38,8 @@ namespace Vsite.Oom.Battleship.Model
             }
             return Equals((Square)obj);
         }
-
+        public bool Hit
+        { get; set; }
         public override int GetHashCode()
         {
             return row ^ column;
