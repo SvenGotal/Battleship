@@ -12,6 +12,7 @@ namespace Vsite.Oom.Battleship.Model
         {
             Row = row;
             Column = column;
+            Hit = false;
         }
 
         public readonly int Row;
@@ -31,6 +32,11 @@ namespace Vsite.Oom.Battleship.Model
             if (obj.GetType() != GetType())
                 return false;
             return Equals((Square)obj);
+        }
+
+        public bool Hit
+        {
+            get; set;
         }
 
         public override int GetHashCode()
