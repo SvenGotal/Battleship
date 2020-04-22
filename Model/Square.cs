@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,8 @@ namespace Vsite.Oom.Battleship.Model
         public readonly int Column;
         public bool Equals(Square other)
         {
+            if (other == null)
+                return false;
             return Row == other.Row && Column == other.Column;
         }
 
@@ -33,6 +36,16 @@ namespace Vsite.Oom.Battleship.Model
         public override int GetHashCode()
         {
             return Row ^ Column;
+        }
+
+        public static bool operator==(Square lhs, Square rhs)
+        {
+            return Equals(lhs, rhs);
+        }
+
+        public static bool operator !=(Square lhs, Square rhs)
+        {
+            return !(lhs == rhs);
         }
     }
 }
