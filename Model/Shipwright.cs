@@ -24,7 +24,7 @@ namespace Vsite.Oom.Battleship.Model
 
                 while (lengths.Count > 0)
                 {
-                    var placements = grid.GetAvailablePlacements(lengths[0]);
+                    var placements = grid.GetAvailablePlacments(lengths[0]);
                     if (placements.Count() == 0)
                     {
                         break;

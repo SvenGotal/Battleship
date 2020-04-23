@@ -20,7 +20,7 @@ namespace Vsite.Oom.Battleship.Model.UnitTests
             Assert.AreEqual(3, q.Count);
             q.Enqueue(4);
             Assert.AreEqual(3, q.Count);
-            Assert.IsFalse(q.Contains(4));
+            Assert.IsFalse(q.Contains(1));
         }
     }
 }
