@@ -56,6 +56,7 @@
     <Compile Include="TestFleet.cs" />
     <Compile Include="TestSquareTerminator.cs" />
     <Compile Include="TestShip.cs" />
+    <Compile Include="TestShipwright.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
